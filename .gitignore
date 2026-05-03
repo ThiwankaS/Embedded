@@ -1,0 +1,33 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# CMake (out-of-source builds)
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.python-version
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.netrwhist
+
+# Local env / secrets (if you add later)
+.env
+.env.*
+
