@@ -2,6 +2,8 @@
 .pio/
 .pioenvs/
 .piolibdeps/
+# Machine-specific upload port, Wi-Fi secrets, etc. (see docs.platformio.org → platformio.local.ini)
+platformio.local.ini
 
 # CMake (out-of-source builds)
 build/
@@ -30,4 +32,18 @@ Thumbs.db
 # Local env / secrets (if you add later)
 .env
 .env.*
+
+# Editor / language servers (Neovim, clangd, tags)
+.cache/
+.clangd/
+/tags
+/tags.lock
+gtags.files
+GPATH
+GRTAGS
+GTAGS
+cscope.out
+
+# OS trash
+.Trash-*/
 
