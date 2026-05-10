@@ -1,0 +1,28 @@
+# Parse as host C++ (clangd cannot target Xtensa). Regenerate: pio run -t compiledb
+#
+# ESP8266 BearSSL / WiFi stack and ArduinoJson v7 expose a few bogus diagnostics when
+# the compile command is retargeted to host clang++ (see README).
+
+CompileFlags:
+  CompilationDatabase: .
+  Compiler: clang++
+  Add:
+    - '-DPSTR(s)=(s)'
+  Remove:
+    - -mlongcalls
+    - -mtext-section-literals
+    - -free
+    - -fipa-pta
+
+Diagnostics:
+  Suppress:
+    - redefinition_different_typedef
+    - pp_file_not_found
+    # Host-only false positives (inheritance / overload resolution) with ESP8266 + ArduinoJson:
+    - ovl_no_viable_function_in_init
+    - ovl_ambiguous_member_call
+    - ovl_no_viable_member_function_in_call
+    - undeclared_var_use_suggest
+    - ovl_no_viable_function_in_call
+    - typecheck_nonviable_condition
+    - ovl_no_viable_subscript
