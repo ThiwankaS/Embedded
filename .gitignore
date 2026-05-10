@@ -1,11 +1,35 @@
-# PlatformIO
+# ─── Secrets & local credentials (never commit) ─────────────────────────────
+.env
+.env.*
+!.env.example
+
+# PlatformIO / firmware: copy from *secrets.example.h* or similar templates
+**/include/secrets.h
+**/secrets.local.h
+**/credentials.h
+**/private_config.h
+**/local_secrets.h
+
+# Keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_rsa.*
+*.der
+
+# Optional: override templates stay tracked; real keys stay untracked
+!**/secrets.example.h
+!**/credentials.example.h
+
+# ─── PlatformIO ──────────────────────────────────────────────────────────────
 .pio/
 .pioenvs/
 .piolibdeps/
-# Machine-specific upload port, Wi-Fi secrets, etc. (see docs.platformio.org → platformio.local.ini)
 platformio.local.ini
 
-# CMake (out-of-source builds)
+# ─── CMake (out-of-source builds) ───────────────────────────────────────────
 build/
 cmake-build-*/
 CMakeCache.txt
@@ -14,26 +38,32 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 
-# Python
+# ─── Python ─────────────────────────────────────────────────────────────────
 .venv/
 venv/
 __pycache__/
 *.py[cod]
 .python-version
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+*.egg-info/
+dist/
 
-# OS / editor
+# ─── Node (if you add JS tooling) ──────────────────────────────────────────
+node_modules/
+
+# ─── OS / editor ───────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 *~
 *.swp
 *.swo
 .netrwhist
+.Trash-*/
 
-# Local env / secrets (if you add later)
-.env
-.env.*
-
-# Editor / language servers (Neovim, clangd, tags)
+# Language servers, index caches, tags (not project .clangd *files*)
 .cache/
 .clangd/
 /tags
@@ -44,6 +74,10 @@ GRTAGS
 GTAGS
 cscope.out
 
-# OS trash
-.Trash-*/
+# Editor backup / swap
+*.bak
+*.tmp
+*.temp
 
+# Logs
+*.log
