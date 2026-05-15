@@ -1,0 +1,21 @@
+# Parse as host C++ (clangd cannot target Xtensa). Real builds still use compile_commands
+# from PlatformIO (xtensa-lx106-elf-g++). Regenerate: pio run -t compiledb
+#
+# Neovim: pass --query-driver to clangd (see README.md in this folder or exp_01) if you drop Compiler: clang++.
+
+CompileFlags:
+  CompilationDatabase: .
+  Compiler: clang++
+  Remove:
+    - -mlongcalls
+    - -mtext-section-literals
+    - -free
+    - -fipa-pta
+
+Diagnostics:
+  # Cross-parsing Arduino + newlib against libstdc++ produces noisy host-only diagnostics.
+  Suppress:
+    - redefinition_different_typedef
+    - pp_file_not_found
+
+
