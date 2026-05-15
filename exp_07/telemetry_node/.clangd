@@ -1,0 +1,27 @@
+# ESP-IDF + clangd: compile_commands.json is used from the project root (symlink to build/ is fine).
+# If you ever remove the symlink, uncomment:
+# CompilationDatabase: build
+
+CompileFlags:
+  # Drop GCC/IDF flags clangd’s driver does not parse (avoids cascading bogus errors in <iostream>, etc.).
+  Remove:
+    - -mlongcalls
+    - -mno-longcalls
+    - -fstrict-volatile-bitfields
+    - -fno-strict-volatile-bitfields
+    - -fno-tree-switch-conversion
+    - -fno-shrink-wrap
+    - -fmacro-prefix-map=*
+    - -fdiagnostics-color=*
+    - -fdebug-prefix-map=*
+    # Add more if diagnostics still mention "Unknown argument: ...":
+    # - -mtext-section-literals
+    # - -fno-caller-saves
+
+Diagnostics:
+  # Optional: IDF pulls in many transitive headers; "not used directly" is often noise here.
+  UnusedIncludes: None
+  # Optional: still run clang-tidy but don’t fail the editor on tidy-only issues.
+  # ClangTidy:
+  #   CheckOptions:
+  #     readability-*: false

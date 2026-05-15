@@ -1,7 +1,7 @@
 idf_component_register(
-    SRCS "main.cpp"
-    INCLUDE_DIRS "."
-    REQUIRES monitor
+    SRCS "src/SystemTask.cpp"
+    INCLUDE_DIRS "include"
+    REQUIRES freertos
 )
 
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_20)

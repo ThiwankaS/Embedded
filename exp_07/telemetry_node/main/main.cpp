@@ -7,9 +7,8 @@ extern "C" void app_main(void) {
     std::cout << "--- Telemetry Node --- \n";
     auto* monitor = new MonitorTask("Sys_monitor", 4096, 1);
     monitor->start(0);
-    
-    // main thread will be live ideal as an observer
+
     while (true) {
-        vTaskDelay(portMAX_DELAY); 
+        vTaskDelay(portMAX_DELAY);
     }
 }
